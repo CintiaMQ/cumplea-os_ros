@@ -1,0 +1,268 @@
+/* Variables de color */
+:root {
+    --vanilla: #f0e4d0;
+    --chocolate: #ebb5b2;
+    --button-bg: #f39c12; /* Color del botón */
+    --button-hover: #e67e22; /* Color del botón en hover */
+    --message-bg: rgba(0, 0, 0, 0.8); /* Fondo de la ventana emergente */
+    --message-text: #fff; /* Color del texto */
+    --message-padding: 20px;
+}
+
+/* Estilo básico del body */
+body {
+    background-color: #333;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden; /* Prevent scrolling */
+}
+
+/* Contenedor de la torta */
+.cake {
+    position: relative;
+    width: 200px; /* Default size for mobile */
+    height: 160px;
+}
+
+/* Base de la torta (plato) */
+.plate {
+    width: 220px;
+    height: 110px;
+    position: absolute;
+    bottom: -10px;
+    left: -10px;
+    background-color: #ccc;
+    border-radius: 50%;
+    box-shadow: 0 5px 40px rgba(0, 0, 0, 0.5);
+}
+
+/* Capas de la torta */
+.layer {
+    position: absolute;
+    width: 200px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: var(--chocolate);
+}
+
+.layer-top { top: 0; }
+.layer-middle { top: 27px; }
+.layer-bottom { top: 54px; }
+
+/* Glaseado de la torta */
+.icing {
+    position: absolute;
+    top: 2px;
+    left: 5px;
+    background-color: var(--vanilla);
+    width: 190px;
+    height: 75px;
+    border-radius: 50%;
+}
+
+.icing::before {
+    content: "";
+    position: absolute;
+    top: 4px;
+    right: 5px;
+    bottom: 6px;
+    left: 5px;
+    background-color: lighten(var(--vanilla), 3%);
+    box-shadow:
+        0 0 4px lighten(var(--vanilla), 5%),
+        0 0 4px lighten(var(--vanilla), 5%),
+        0 0 4px lighten(var(--vanilla), 5%);
+    border-radius: 50%;
+    z-index: 1;
+}
+
+/* Gotas del glaseado */
+.drip {
+    width: 40px;
+    height: 50px;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+    background-color: var(--vanilla);
+    position: absolute;
+}
+
+.drip1 { top: 50px; left: 5px; height: 40px; width: 30px; transform: skewY(15deg); }
+.drip2 { top: 60px; left: 140px; transform: skewY(-15deg); }
+.drip3 { top: 50px; left: 70px; width: 60px; border-bottom-left-radius: 40px; border-bottom-right-radius: 40px; }
+
+/* Vela de la torta */
+.candle {
+    background-color: #7B020B;
+    width: 12px;
+    height: 40px;
+    border-radius: 6px / 3px;
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    margin-left: -6px;
+    z-index: 10;
+}
+
+.candle::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 12px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: lighten(#7B020B, 10%);
+}
+
+/* Llama de la vela */
+.flame {
+    position: absolute;
+    background-color: orange;
+    width: 10px;
+    height: 20px;
+    border-radius: 50%;
+    top: -40px;
+    left: 15%;
+    transform: translateX(-50%);
+    box-shadow:
+        0 0 10px rgba(102, 255, 0, 0.5),
+        0 0 20px rgba(255, 165, 0, 0.5),
+        0 0 60px rgba(255, 165, 0, 0.5),
+        0 0 80px rgba(255, 165, 0, 0.5);
+    animation: flicker 2s ease-in-out alternate infinite;
+}
+
+/* Animación de parpadeo de la llama */
+@keyframes flicker {
+    0% { transform: skewX(5deg); }
+    25% { transform: skewX(-5deg); }
+    50% { transform: skewX(10deg); }
+    75% { transform: skewX(-10deg); }
+    100% { transform: skewX(5deg); }
+}
+
+/* Ocultar la llama cuando sea necesario */
+.hidden {
+    display: none; /* Initially hide the flame */
+}
+
+#countdown {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 20px; /* Adjust font size for mobile */
+    color: white;
+}
+
+#birthdayMessage {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 24px;
+    color: var(--message-text);
+    background-color: var(--message-bg);
+    padding: var(--message-padding);
+    border-radius: 15px;
+    text-align: center;
+    z-index: 1000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    animation: fadeIn 0.5s ease-out;
+}
+
+#birthdayMessage h1 {
+    margin: 0;
+    font-size: 28px;
+    color: #f39c12;
+}
+
+#birthdayMessage button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: var(--button-bg);
+    color: var(--message-text);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#birthdayMessage button:hover {
+    background-color: var(--button-hover);
+}
+
+/* Animación de aparición */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Responsive adjustments */
+@media (min-width: 768px) {
+    .cake {
+        width: 250px; /* Adjust size for tablets and larger devices */
+        height: 200px;
+    }
+
+    .plate {
+        width: 270px;
+        height: 110px;
+    }
+
+    .layer {
+        width: 250px;
+        height: 100px;
+    }
+
+    .icing {
+        width: 240px;
+        height: 90px;
+    }
+
+    .drip {
+        width: 50px;
+        height: 60px;
+    }
+
+    .candle {
+        width: 16px;
+        height: 50px;
+    }
+
+    .flame {
+        width: 15px;
+        height: 35px;
+    }
+
+    #countdown {
+        font-size: 24px;
+    }
+
+    #birthdayMessage {
+        font-size: 36px;
+    }
+}
+
+@media (min-width: 1024px) {
+    /* Additional styles for larger screens */
+}
+#toggleMusicButton {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #f0ad4e;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#toggleMusicButton:hover {
+    background-color: #ec971f;
+}

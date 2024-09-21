@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Feliz Cumpleaños</title>
+</head>
+<body>
+    <div class="cake">
+        <div class="plate"></div>
+        <div class="layer layer-bottom"></div>
+        <div class="layer layer-middle"></div>
+        <div class="layer layer-top"></div>
+        <div class="icing"></div>
+        <div class="drip drip1"></div>
+        <div class="drip drip2"></div>
+        <div class="drip drip3"></div>
+        <div class="candle">
+            <div class="flame hidden" id="flame"></div> <!-- Start with hidden flame -->
+        </div>
+    </div>
+    <div id="countdown"></div>
+    <div id="birthdayMessage" class="hidden">
+        <h5>🎉Feliz Cumpleaños que se cumplan todas tus metas🍰</h5>
+        <button id="toggleMusicButton" class="hidden">Pausar música</button>
+
+        <button id="continueButton">CONTINUAR VIDEO</button> <!-- Ensure button is inside the birthdayMessage div -->
+    </div>
+    <!-- Include confetti library -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+
+    <audio id="backgroundMusic" src="musica.m4a" preload="auto"></audio>
+    <script src="script.js"></script>
+</body>
+</html>

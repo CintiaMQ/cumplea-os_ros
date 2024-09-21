@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #DEB5B3;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        .video-container {
+            position: relative;
+            width: 90%;
+            max-width: 800px;
+            margin: 20px 0;
+        }
+
+        video {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .message-button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .message-button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Styles for the popup */
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: none; /* Hidden by default */
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+
+        .popup {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            max-width: 90%;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+
+        .popup h2 {
+            margin-top: 0;
+            color: #333;
+            font-size: 22px;
+        }
+
+        .popup p {
+            color: #555;
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        .popup button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #d770db;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .popup button:hover {
+            background-color: #c54d87;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .popup {
+                max-width: 95%;
+                padding: 15px;
+            }
+
+            .popup h2 {
+                font-size: 20px;
+            }
+
+            .popup p {
+                font-size: 14px;
+            }
+
+            .message-button {
+                font-size: 14px;
+                padding: 8px 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>MIRAR VIDEO</h1>
+    <div class="video-container">
+        <video controls>
+            <source src="video.mp4" type="video/mp4">
+            Tu navegador no soporta el elemento de video.
+        </video>
+    </div>
+    <button class="message-button" onclick="showPopup()">Pulsa aquí</button>
+
+    <!-- Popup -->
+    <div id="popupOverlay" class="popup-overlay">
+        <div class="popup">
+            <h2>Mensaje Para ti </h2>
+            <p> 
+                Querida hermana:
+                
+                En el día de tu cumpleaños, quiero desearte toda la felicidad del mundo. Espero que puedas cumplir todas tus metas y sueños. Aunque no siempre lo decimos, quiero que sepas cuánto te quiero y admiro. Eres increíblemente valiente por seguir adelante a pesar de las dificultades que has enfrentado.
+                
+                Quiero que sepas que, por todo lo que has pasado, no tienes por qué sentirte culpable. La vida puede ser dura, pero tus esfuerzos y tu fortaleza son admirables. Espero que te recuperes bien y que pronto llegue a tu vida alguien que te quiera y valore como te mereces. Que encuentres un amor bonito y sincero. Y estoy aquí para apoyarte; si quieres hablar, siempre estaré aquí para escucharte.
+                
+                Mientras tanto, no te desesperes; aún tienes un camino lleno de posibilidades por delante. Te deseo un día maravilloso y que cada día esté lleno de cosas buenas.
+                
+                ¡Te quiero mucho!</p>
+            <button onclick="closePopup()">Cerrar</button>
+        </div>
+    </div>
+
+    <script>
+        function showPopup() {
+            document.getElementById('popupOverlay').style.display = 'flex';
+        }
+
+        function closePopup() {
+            document.getElementById('popupOverlay').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
