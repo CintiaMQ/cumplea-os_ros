@@ -31,11 +31,28 @@ function lightCandle() {
     startMicrophoneDetection(); // Start microphone detection after lighting the candle
 }
 
-// Añadir evento de doble clic para apagar la vela
+// Detectar doble clic en computadoras
 document.body.addEventListener('dblclick', function() {
     if (!flame.classList.contains("hidden")) { // Si la vela está encendida
         extinguishCandle();
     }
+});
+
+let lastTouchTime = 0;
+
+// Detectar el doble toque en dispositivos móviles
+document.body.addEventListener('touchstart', function(event) {
+    const currentTime = new Date().getTime();
+    const timeSinceLastTouch = currentTime - lastTouchTime;
+
+    if (timeSinceLastTouch < 500 && timeSinceLastTouch > 0) {
+        // Es un doble toque si la diferencia es menor a 500 ms
+        if (!flame.classList.contains("hidden")) { // Si la vela está encendida
+            extinguishCandle();
+        }
+    }
+
+    lastTouchTime = currentTime;
 });
 
 // Función para detectar sonido usando el micrófono
