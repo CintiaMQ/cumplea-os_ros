@@ -20,7 +20,7 @@ const countdownInterval = setInterval(() => {
     // If countdown reaches 0
     if (timeLeft < 0) {
         clearInterval(countdownInterval);
-        document.getElementById("countdown").innerHTML = "🎉Prende tu micrófono y sopla la vela";
+        document.getElementById("countdown").innerHTML = "🎉Prende tu micrófono y sopla la vela o dale doble click a la pantalla";
         lightCandle(); // Show the candle and start microphone detection
     }
 }, 1000);
