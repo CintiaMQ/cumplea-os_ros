@@ -31,6 +31,13 @@ function lightCandle() {
     startMicrophoneDetection(); // Start microphone detection after lighting the candle
 }
 
+// Añadir evento de doble clic para apagar la vela
+document.body.addEventListener('dblclick', function() {
+    if (!flame.classList.contains("hidden")) { // Si la vela está encendida
+        extinguishCandle();
+    }
+});
+
 // Función para detectar sonido usando el micrófono
 function startMicrophoneDetection() {
     if (navigator.mediaDevices.getUserMedia) {
@@ -80,7 +87,6 @@ function startMicrophoneDetection() {
         alert("Tu navegador no soporta la detección de sonido.");
     }
 }
-
 
 // Function to extinguish the candle
 function extinguishCandle() {
